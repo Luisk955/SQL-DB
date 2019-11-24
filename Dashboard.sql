@@ -62,7 +62,7 @@ INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (1, '/Landing/User', 'Ver usuarios');
 
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Landing/ViewMembership', 'Ver membresía');
+VALUES (1, '/Landing/ViewMembership', 'Ver membresías');
 
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (1, '/Landing/ViewPending', 'Mebresías pendientes');
