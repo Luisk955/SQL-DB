@@ -93,3 +93,15 @@ VALUES (2, '/Products', 'Ver productos');
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (2, '/Products/RegisterProduct', 'Registrar producto');
 /*LocalOwner Views*/
+
+GO
+
+CREATE PROCEDURE [dbo].[LOGIN_PR]
+@P_EMAIL VARCHAR(255),
+@P_PASSWORD VARCHAR(255)
+
+AS
+
+SELECT ID FROM USERS WHERE EMAIL = @P_EMAIL AND PASSWORD = @P_PASSWORD;
+
+GO
