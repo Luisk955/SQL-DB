@@ -78,6 +78,13 @@ VALUES (3, '/Landing/MyMembership', 'Mi membresía');
 
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (3, '/Landing/ListOrders', 'Ver Ordenes');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (3, '/Driver/Membership', 'Membresía');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (3, '/Driver/Orders', 'Órdenes');
+
 /*Driver Views*/
 
 /*LocalOwner Views*/
