@@ -428,5 +428,5 @@ CREATE PROCEDURE RET_CURRENT_ORDER_LOCAL_PR
 as
 	Select O.Id ID,O.Id_Buyer ID_BUYER,O.Id_Seller ID_SELLER,O.Id_Driver ID_DRIVER,O.Id_Location ID_LOCATION, O.Invoice INVOICE,U.Name STATUS,O.Start_Time START_TIME,O.End_Time END_TIME,O.Description DESCRIPTION,O.Type TYPE from orders O
 	Join UTILS U on O.STATUS=U.Id
-	where o.ID_SELLER=@P_ID_SELLER  and o.status!='ordComp';
+	where o.ID_SELLER=@P_ID_SELLER  and o.status='ordPen';
 GO
