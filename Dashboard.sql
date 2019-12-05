@@ -150,7 +150,7 @@ CREATE PROCEDURE [dbo].[LOGIN_PR]
 
 AS
 
-SELECT us.ID, Rol.NAME from dbo.[USERS] as us 
+SELECT us.ID, Rol.ID from dbo.[USERS] as us 
 INNER JOIN [dbo].[ROLEXUSER] as RxU  ON  us.ID=RxU.ID_USER 
 INNER JOIN [dbo].[ROLE] as Rol  ON  Rol.ID=RxU.ID_ROLE
 WHERE EMAIL = @P_EMAIL AND PASSWORD = @P_PASSWORD;
