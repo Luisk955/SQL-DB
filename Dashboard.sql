@@ -103,6 +103,19 @@ VALUES (1, '/Landing/ViewPending', 'Mebresías pendientes');
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (1, '/Landing/ListOrders', 'Ver Ordenes');
 
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Tax/RegisterTax', 'Crear Impuesto');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Tax', 'Listar Impuesto');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Coupon/RegisterCoupon', 'Crear Cupon');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Coupon', 'Listar Cupon');
+
+
 /*Admin Views*/
 
 /*Driver Views*/
