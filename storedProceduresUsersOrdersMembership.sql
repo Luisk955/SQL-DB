@@ -1,6 +1,9 @@
 insert into PRODUCT(ID_LOCAL,NAME,STATUS,PRICE,DESCRIPTION,CATEGORY)
 values (1,'Membership','Active',0,'Applications Membership','CATSYS');
 GO
+insert into users (id,name,last_name,phone_number,birthdate,password,status,balance,PAYPAL_USER,email,CREATION_DATE,PHONE_CONF,EMAIL_CONF)
+values (1,'Admin','',0000,SYSDATETIME(),'4dm1n','statAct',0,'','ipsum@jobs.com',SYSDATETIME(),'','')
+GO
 insert into utils(id,name) values ('statAct','Active')
 GO
 insert into utils(id,name) values ('statDis','Disabled')
@@ -12,6 +15,22 @@ GO
 insert into utils(id,name) values ('ordComp','Completed')
 GO
 insert into utils(id,name) values ('memPen','Pending')
+GO
+insert into utils(id,name) values ('memAct','Activa')
+GO
+insert into utils(id,name) values ('typeDr','Driver')
+GO
+insert into utils(id,name) values ('typeLo','Local')
+GO
+insert into utils(id,name) values ('intMon','Mensual')
+GO
+insert into utils(id,name) values ('intAnu','Anual')
+GO
+insert into utils(id,name) values ('memPenP','Pending Pay')
+GO
+insert into utils(id,name) values ('vhcBike','Bicicleta')
+GO
+insert into utils(id,name) values ('vhcCar','Carro')
 GO
 CREATE PROCEDURE RET_MEMBERSHIP_PR
 
