@@ -389,3 +389,25 @@ AS
 
 GO
 
+CREATE PROCEDURE RET_CURRENT_ORDER_USER_PR
+	@P_Id_Buyer int
+as
+	Select O.Id Id,O.Id_Buyer Id_Buyer,O.Id_Seller Id_Seller,O.Id_Driver Id_Driver,O.Id_Location Id_Location, O.Invoice Invoice,U.Name Status,O.Start_Time Start_Time,O.End_Time,O.Description Description,O.Type Type from orders O
+	Join UTILS U on O.STATUS=U.Id
+	where o.id_buyer=@P_Id_Buyer;
+GO
+
+CREATE PROCEDURE RET_CURRENT_ORDER_DRIVER_PR
+	@P_ID_DRIVER int
+as
+	Select O.Id Id,O.Id_Buyer Id_Buyer,O.Id_Seller Id_Seller,O.Id_Driver Id_Driver,O.Id_Location Id_Location, O.Invoice Invoice,U.Name Status,O.Start_Time Start_Time,O.End_Time,O.Description Description,O.Type Type from orders O
+	Join UTILS U on O.STATUS=U.Id
+	where o.ID_DRIVER=@P_ID_DRIVER;
+GO
+CREATE PROCEDURE RET_CURRENT_ORDER_LOCAL_PR
+	@P_ID_SELLER int
+as
+	Select O.Id Id,O.Id_Buyer Id_Buyer,O.Id_Seller Id_Seller,O.Id_Driver Id_Driver,O.Id_Location Id_Location, O.Invoice Invoice,U.Name Status,O.Start_Time Start_Time,O.End_Time,O.Description Description,O.Type Type from orders O
+	Join UTILS U on O.STATUS=U.Id
+	where o.ID_SELLER=@P_ID_SELLER;
+GO
