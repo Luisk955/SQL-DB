@@ -413,7 +413,7 @@ CREATE PROCEDURE RET_CURRENT_ORDER_USER_PR
 as
 	Select O.Id Id,O.Id_Buyer Id_Buyer,O.Id_Seller Id_Seller,O.Id_Driver Id_Driver,O.Id_Location Id_Location, O.Invoice Invoice,U.Name Status,O.Start_Time Start_Time,O.End_Time,O.Description Description,O.Type Type from orders O
 	Join UTILS U on O.STATUS=U.Id
-	where o.id_buyer=@P_Id_Buyer;
+	where o.id_buyer=@P_Id_Buyer and o.status!='ordComp';
 GO
 
 CREATE PROCEDURE RET_CURRENT_ORDER_DRIVER_PR
@@ -421,12 +421,12 @@ CREATE PROCEDURE RET_CURRENT_ORDER_DRIVER_PR
 as
 	Select O.Id Id,O.Id_Buyer Id_Buyer,O.Id_Seller Id_Seller,O.Id_Driver Id_Driver,O.Id_Location Id_Location, O.Invoice Invoice,U.Name Status,O.Start_Time Start_Time,O.End_Time,O.Description Description,O.Type Type from orders O
 	Join UTILS U on O.STATUS=U.Id
-	where o.ID_DRIVER=@P_ID_DRIVER;
+	where o.ID_DRIVER=@P_ID_DRIVER  and o.status!='ordComp';
 GO
 CREATE PROCEDURE RET_CURRENT_ORDER_LOCAL_PR
 	@P_ID_SELLER int
 as
 	Select O.Id Id,O.Id_Buyer Id_Buyer,O.Id_Seller Id_Seller,O.Id_Driver Id_Driver,O.Id_Location Id_Location, O.Invoice Invoice,U.Name Status,O.Start_Time Start_Time,O.End_Time,O.Description Description,O.Type Type from orders O
 	Join UTILS U on O.STATUS=U.Id
-	where o.ID_SELLER=@P_ID_SELLER;
+	where o.ID_SELLER=@P_ID_SELLER  and o.status!='ordComp';
 GO
