@@ -11,6 +11,32 @@ END
 
 Go
 
+CREATE PROCEDURE [dbo].[RET_LOCALS_BYUSER_PR]
+  @P_USER_ID INT
+AS
+BEGIN
+
+Select L.ID, L.ID_MEMBERSHIP, L.NAME, L.STATUS, L.LOCATION, L.OPENING_HOURS, L.PHONE_NUMBER, L.EMAIL, L.DESCRIPTION, L.WEBSITE, L.PRICE_RANGE, L.CATEGORY  from dbo.[LOCAL] as L
+  INNER JOIN [dbo].[USERXLOCAL] as UXL ON L.ID=UXL.ID_LOCAL 
+  INNER JOIN [dbo].[USERS] as U ON U.ID=UXL.ID_USER
+  WHERE USERS.ID=@P_USER_ID;
+END
+
+Go
+
+CREATE PROCEDURE [dbo].[RET_ALL_PRODUCTS_BY_LOCAL_PR]
+@P_ID_LOCAL INT
+AS
+SELECT * FROM [PRODUCT] WHERE ID_LOCAL = @P_ID_LOCAL;
+GO
+
+CREATE PROCEDURE [dbo].[CRE_LOCALXUSER_PR]
+  @P_ID_USER INT,
+  @P_ID_LOCAL INT
+AS
+  INSERT INTO [dbo].[USERXLOCAL](ID_USER, ID_LOCAL) 
+  VALUES(@P_ID_USER, @P_ID_LOCAL)
+GO
 
 INSERT INTO [ROLE] (ID, NAME)
 VALUES (1, 'Admin');
@@ -35,6 +61,13 @@ VALUES (115990509, 3, 0);
 
 INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
 VALUES (115990509, 1, 0);
+
+/*LocalOwner*/
+INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
+VALUES (5656565, 2, 1);
+
+INSERT INTO [USERXLOCAL] (ID_USER, ID_LOCAL)
+VALUES(5656565, 6565)
 
 /*Admin Views*/
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
@@ -70,6 +103,19 @@ VALUES (1, '/Landing/ViewPending', 'Mebresías pendientes');
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (1, '/Landing/ListOrders', 'Ver Ordenes');
 
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Tax/RegisterTax', 'Crear Impuesto');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Tax', 'Listar Impuesto');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Coupon/RegisterCoupon', 'Crear Cupon');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (1, '/Coupon', 'Listar Cupon');
+
+
 /*Admin Views*/
 
 /*Driver Views*/
@@ -78,6 +124,13 @@ VALUES (3, '/Landing/MyMembership', 'Mi membresía');
 
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (3, '/Landing/ListOrders', 'Ver Ordenes');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (3, '/Driver/Membership', 'Membresía');
+
+INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
+VALUES (3, '/Driver/Orders', 'Órdenes');
+
 /*Driver Views*/
 
 /*LocalOwner Views*/
@@ -87,11 +140,6 @@ VALUES (2, '/Locals', 'Mis locales');
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
 VALUES (2, '/Locals/RegisterLocal', 'Registrar local');
 
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (2, '/Products', 'Ver productos');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (2, '/Products/RegisterProduct', 'Registrar producto');
 /*LocalOwner Views*/
 
 GO
@@ -102,6 +150,9 @@ CREATE PROCEDURE [dbo].[LOGIN_PR]
 
 AS
 
-SELECT ID FROM USERS WHERE EMAIL = @P_EMAIL AND PASSWORD = @P_PASSWORD;
+SELECT us.ID, Rol.ID from dbo.[USERS] as us 
+INNER JOIN [dbo].[ROLEXUSER] as RxU  ON  us.ID=RxU.ID_USER 
+INNER JOIN [dbo].[ROLE] as Rol  ON  Rol.ID=RxU.ID_ROLE
+WHERE EMAIL = @P_EMAIL AND PASSWORD = @P_PASSWORD;
 
 GO
