@@ -54,8 +54,7 @@ go
 
 
 
-drop procedure [dbo].[CRE_USER_PR]
-go
+
 
 CREATE PROCEDURE [dbo].[CRE_USER_PR]
 
@@ -132,8 +131,8 @@ close symmetric key PASSWORD_key_01;
 END
 GO
 
---execute listarUsersPassEncrypt
---go
+execute listarUsersPassEncrypt
+go
 
 
 CREATE PROCEDURE RET_USERL_LOGIN
@@ -269,6 +268,7 @@ GO
 --go
 
 
+
 CREATE PROCEDURE UPD_USER_BALANCE
 @P_ID int,
 @P_BALANCE float(25)
@@ -281,7 +281,7 @@ begin
 
 
 
-	UPDATE dbo.[USERS] SET BALANCE=@P_BALANCE  WHERE ID=@P_ID;
+	UPDATE dbo.[USERS] SET BALANCE=BALANCE+@P_BALANCE  WHERE ID=@P_ID;
 
 
 	
