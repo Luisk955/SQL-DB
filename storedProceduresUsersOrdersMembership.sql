@@ -32,6 +32,10 @@ insert into utils(id,name) values ('vhcBike','Bicicleta')
 GO
 insert into utils(id,name) values ('vhcCar','Carro')
 GO
+insert into utils(ID,name) values ('appItems','Application Items')
+GO
+INSERT INTO PRODUCT(ID_LOCAL,NAME,STATUS,PRICE,DESCRIPTION,CATEGORY) VALUES (1,'Membership','statAct',0,'Applications Membership','appItems')
+GO
 CREATE PROCEDURE RET_MEMBERSHIP_PR
 
 	@P_ID INT
