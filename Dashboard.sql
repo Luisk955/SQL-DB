@@ -19,7 +19,7 @@ BEGIN
 Select L.ID, L.ID_MEMBERSHIP, L.NAME, L.STATUS, L.LOCATION, L.OPENING_HOURS, L.PHONE_NUMBER, L.EMAIL, L.DESCRIPTION, L.WEBSITE, L.PRICE_RANGE, L.CATEGORY  from dbo.[LOCAL] as L
   INNER JOIN [dbo].[USERXLOCAL] as UXL ON L.ID=UXL.ID_LOCAL 
   INNER JOIN [dbo].[USERS] as U ON U.ID=UXL.ID_USER
-  WHERE USERS.ID=@P_USER_ID;
+  WHERE U.ID=@P_USER_ID;
 END
 
 Go
@@ -36,112 +36,6 @@ CREATE PROCEDURE [dbo].[CRE_LOCALXUSER_PR]
 AS
   INSERT INTO [dbo].[USERXLOCAL](ID_USER, ID_LOCAL) 
   VALUES(@P_ID_USER, @P_ID_LOCAL)
-GO
-
-INSERT INTO [ROLE] (ID, NAME)
-VALUES (1, 'Admin');
-
-INSERT INTO [ROLE] (ID, NAME)
-VALUES (2, 'LocalOwner');
-
-INSERT INTO [ROLE] (ID, NAME)
-VALUES (3, 'Driver');
-
-INSERT INTO [ROLE] (ID, NAME)
-VALUES (4, 'FUser');
-
-INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
-VALUES (65565223, 1, 0);
-
-INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
-VALUES (115990509, 2, 0);
-
-INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
-VALUES (115990509, 3, 0);
-
-INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
-VALUES (115990509, 1, 0);
-
-/*LocalOwner*/
-INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
-VALUES (5656565, 2, 1);
-
-INSERT INTO [USERXLOCAL] (ID_USER, ID_LOCAL)
-VALUES(5656565, 6565)
-
-/*Admin Views*/
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Locals', 'Locales');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Locals/RegisterLocal', 'Registrar local');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Products', 'Ver productos');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Products/RegisterProduct', 'Registrar producto');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Category', 'Categorías');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Category/CreateCategory', 'Registrar categoria');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Landing/AdminReg', 'Registrar administrador');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Landing/User', 'Ver usuarios');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Landing/ViewMembership', 'Ver membresías');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Landing/ViewPending', 'Mebresías pendientes');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Landing/ListOrders', 'Ver Ordenes');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Tax/RegisterTax', 'Crear Impuesto');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Tax', 'Listar Impuesto');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Coupon/RegisterCoupon', 'Crear Cupon');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (1, '/Coupon', 'Listar Cupon');
-
-
-/*Admin Views*/
-
-/*Driver Views*/
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (3, '/Landing/MyMembership', 'Mi membresía');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (3, '/Landing/ListOrders', 'Ver Ordenes');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (3, '/Driver/Membership', 'Membresía');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (3, '/Driver/Orders', 'Órdenes');
-
-/*Driver Views*/
-
-/*LocalOwner Views*/
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (2, '/Locals', 'Mis locales');
-
-INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
-VALUES (2, '/Locals/RegisterLocal', 'Registrar local');
-
-/*LocalOwner Views*/
-
 GO
 
 CREATE PROCEDURE [dbo].[LOGIN_PR]
