@@ -8,12 +8,21 @@ insert into PRODUCT(ID_LOCAL,NAME,STATUS,PRICE,DESCRIPTION,CATEGORY)
 values (1,'Membership','statAct',0,'Applications Membership','statAct');
 GO
 
-insert into users (id,name,last_name,phone_number,birthdate,password,status,balance,PAYPAL_USER,email,CREATION_DATE,PHONE_CONF,EMAIL_CONF)
-values (1,'Admin','',0000,SYSDATETIME(),'4dm1n','statAct',0,'','ipsum@jobs.com',SYSDATETIME(),'','')
+INSERT INTO USERS (ID, NAME, LAST_NAME, PHONE_NUMBER, BIRTHDATE, PASSWORD, STATUS, BALANCE, PAYPAL_USER, EMAIL, CREATION_DATE, PHONE_CONF, EMAIL_CONF)
+values (1,'Admin','',0000,SYSDATETIME(),'4dm1n','statAct',0,'','ipsum@jobs.com',SYSDATETIME(), '', '')
 GO
 
 INSERT INTO ROLEXUSER(ID_USER, ID_ROLE, PRIVILEGE)
 VALUES(1, 1, 0)
+GO
+
+INSERT INTO USERS (ID, NAME, LAST_NAME, PHONE_NUMBER, BIRTHDATE, PASSWORD, STATUS, BALANCE, PAYPAL_USER, EMAIL, CREATION_DATE, PHONE_CONF, EMAIL_CONF)
+
+VALUES(115963256, 'Ronald', 'McDonald', '25256556', SYSDATETIME(), 'mc', 'statAct', 0, '', 'mcdonalds@bussiness.com', SYSDATETIME(), 'PWOEMSKQ','LMBSQLAO');
+GO
+
+INSERT INTO ROLEXUSER(ID_USER, ID_ROLE, PRIVILEGE)
+VALUES(115963256, 2, 0)
 GO
 
 insert into utils(id,name) values ('statAct','Active')
