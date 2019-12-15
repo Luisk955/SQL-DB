@@ -1,26 +1,4 @@
--- procedimiento almacenado registar usuario con password encryptado
--- create  database master key
-  create master key encryption by
-  password ='SimplePassword';
-  go
-
-  -- create certificate
-  create certificate cifrando01
-  with subject='cifrando';
-  go
-
-
-  select * from sys.certificates
-  go
-
--- create symmetric key 
-create symmetric key PASSWORD_key_01
-with algorithm = AES_256
-encryption by certificate cifrando01;
-
-go
-
-CREATE PROCEDURE [dbo].[CRE_USER_PR]
+/*CREATE PROCEDURE [dbo].[CRE_USER_PR]
 
 	@P_ID INT,
 
@@ -60,7 +38,7 @@ declare @PASSWORD varbinary(128)
 
 	close symmetric key PASSWORD_key_01;
 	end
-GO
+GO*/
 
 ----prueba
 execute  [dbo].[CRE_USER_PR] 4,'Mario','Delgado','88184364','2019-04-05 00:00:00.000','mario',22,'mario@paypal.com','mariodelgt@gmail.com','2019-04-05 ','nadad','dasdsads'
@@ -69,10 +47,7 @@ go
 
 
 ------------ listar   
-
-
-
-CREATE PROCEDURE RET_ALL_USER_PR
+CREATE PROCEDURE RET_ALL_USER_DESENCRIPT_PR
 
 AS
 
