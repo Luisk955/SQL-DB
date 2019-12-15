@@ -1,3 +1,26 @@
+-- procedimiento almacenado registar usuario con password encryptado
+-- create  database master key
+  create master key encryption by
+  password ='Password1234{@';
+  go
+
+  -- create certificate
+  create certificate cifrando01
+  with subject='cifrando';
+  go
+
+
+  select * from sys.certificates
+  go
+
+-- create symmetric key 
+create symmetric key PASSWORD_key_01
+with algorithm = AES_256
+encryption by certificate cifrando01;
+
+go
+
+
 CREATE TABLE [EXCEPTION] (
   [ID] INT PRIMARY KEY,
   [EXCEPTION_MESSAGE] VARCHAR(255) NOT NULL

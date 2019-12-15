@@ -1,62 +1,4 @@
-
-
-
-
---  -- create  database master key
---  create master key encryption by
---  password ='SimplePassword';
---  go
-
-
---   -- create certificate
---  create certificate certificateName
---  with subject='cifrando';
---  go
-
---    -- comprobar certificado
- 
---  select * from sys.certificates
---  go
-
-
---   -- create symmetric key 
---create symmetric key nombreDeLaColumna_key_01
---with algorithm = AES_256
---encryption by certificate certificateName;
-
---go
-
-
--- procedimiento almacenado registar usuario con password encryptado
-
-
-
--- create  database master key
-  create master key encryption by
-  password ='SimplePassword';
-  go
-
-  -- create certificate
-  create certificate cifrando01
-  with subject='cifrando';
-  go
-
-
-    select * from sys.certificates
-  go
-
-     -- create symmetric key 
-create symmetric key PASSWORD_key_01
-with algorithm = AES_256
-encryption by certificate cifrando01;
-
-go
-
-
-
-
-
-CREATE PROCEDURE [dbo].[CRE_USER_PR]
+/*CREATE PROCEDURE [dbo].[CRE_USER_PR]
 
 	@P_ID INT,
 
@@ -97,7 +39,7 @@ declare @PASSWORD varbinary(128)
 
 	close symmetric key PASSWORD_key_01;
 	end
-GO
+GO*/
 
 ----prueba
 --execute  [dbo].[CRE_USER_PR] 22,'Mario','Delgado','88184364','2019-04-05 00:00:00.000','lucas',22,'lucas@paypal.com','lucas@gmail.com','2019-04-05 ','nadad','dasdsads'
@@ -106,13 +48,6 @@ GO
 
 
 ------------ listar   
-
-
-
-
-
-
-
 	create procedure listarUsersPassEncrypt
 	as
 begin
@@ -144,12 +79,6 @@ Begin
 
 open symmetric key PASSWORD_key_01
 decryption by certificate cifrando01;
-
-
-	 
-
-
-
 
 Select us.ID,us.NAME,us.LAST_NAME,us.PHONE_NUMBER,us.BIRTHDATE,us.STATUS,us.BALANCE,us.PAYPAL_USER,us.EMAIL,us.CREATION_DATE,us.PHONE_CONF,us.EMAIL_CONF,Rol.NAME as RNAME from dbo.[USERS] as us 
 INNER JOIN [dbo].[ROLEXUSER] as RxU  ON  us.ID=RxU.ID_USER 
