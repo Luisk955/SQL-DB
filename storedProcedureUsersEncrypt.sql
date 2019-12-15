@@ -1,38 +1,4 @@
-
-
-***********************************************************
-
-
-  -- create  database master key
-  create master key encryption by
-  password ='SimplePassword';
-  go
-
-
-   -- create certificate
-  create certificate certificateName
-  with subject='cifrando';
-  go
-
-    -- comprobar certificado
- 
-  select * from sys.certificates
-  go
-
-
-   -- create symmetric key 
-create symmetric key nombreDeLaColumna_key_01
-with algorithm = AES_256
-encryption by certificate certificateName;
-
-go
-
-
-
 -- procedimiento almacenado registar usuario con password encryptado
-
-
-
 -- create  database master key
   create master key encryption by
   password ='SimplePassword';
@@ -44,21 +10,15 @@ go
   go
 
 
-    select * from sys.certificates
+  select * from sys.certificates
   go
 
-     -- create symmetric key 
+-- create symmetric key 
 create symmetric key PASSWORD_key_01
 with algorithm = AES_256
 encryption by certificate cifrando01;
 
 go
-
-drop procedure CRE_USER_PR
-go
-
-
-
 
 CREATE PROCEDURE [dbo].[CRE_USER_PR]
 
@@ -87,7 +47,6 @@ CREATE PROCEDURE [dbo].[CRE_USER_PR]
 	@P_EMAIL_CONF VARCHAR(45)
 
 AS
-
 	begin
 	open symmetric key PASSWORD_key_01
 decryption by certificate cifrando01;
@@ -121,8 +80,6 @@ AS
 
 GO
 
-
-
 	create procedure listarUsersPassEncrypt
 	as
 begin
@@ -135,8 +92,6 @@ ID,NAME,LAST_NAME, STATUS,convert(nvarchar(255),DECRYPTBYKEY(PASSWORD)) as [pass
 
 
 close symmetric key PASSWORD_key_01;
-
-
 
 END
 GO
