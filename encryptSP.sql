@@ -78,26 +78,6 @@ close symmetric key PASSWORD_key_01;
 END
 GO
 
------------- listar   
-	create procedure listarUsersPassEncrypt
-	as
-begin
-
-open symmetric key PASSWORD_key_01
-decryption by certificate cifrando01;
-select
-ID,NAME,LAST_NAME, STATUS,convert(nvarchar(255),DECRYPTBYKEY(PASSWORD)) as [password descifrado],PHONE_NUMBER,BIRTHDATE,BALANCE,PAYPAL_USER,EMAIL,CREATION_DATE FROM USERS
-
-
-
-close symmetric key PASSWORD_key_01;
-
-
-
-END
-GO
-
-
 CREATE PROCEDURE UPD_USERPaypalEmail
 @P_ID int,
 @P_PAYPAL_USER nvarchar(25)
