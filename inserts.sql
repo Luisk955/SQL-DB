@@ -1,30 +1,4 @@
-INSERT INTO MEMBERSHIP(FEE, TYPE, COMMISSION, FEE_INTERVAL, STATUS)
-VALUES(0, 'typeLo', 0, 'intAnu', 'memAct')
-GO
-INSERT INTO LOCAL(ID, ID_MEMBERSHIP, NAME, STATUS, LOCATION, OPENING_HOURS, PHONE_NUMBER, EMAIL, DESCRIPTION, WEBSITE, PRICE_RANGE, CATEGORY)
-VALUES (1, 1, 'Goeats', 'statAct', 'Goeats', 'Goeats', 'Goeats','Goeats','Goeats','Goeats','Goeats','typeLo');
-GO
-insert into PRODUCT(ID_LOCAL,NAME,STATUS,PRICE,DESCRIPTION,CATEGORY)
-values (1,'Membership','statAct',0,'Applications Membership','statAct');
-GO
-
-INSERT INTO USERS (ID, NAME, LAST_NAME, PHONE_NUMBER, BIRTHDATE, PASSWORD, STATUS, BALANCE, PAYPAL_USER, EMAIL, CREATION_DATE, PHONE_CONF, EMAIL_CONF)
-values (1,'Admin','',0000,SYSDATETIME(),'4dm1n','statAct',0,'','ipsum@jobs.com',SYSDATETIME(), '', '')
-GO
-
-INSERT INTO ROLEXUSER(ID_USER, ID_ROLE, PRIVILEGE)
-VALUES(1, 1, 0)
-GO
-
-INSERT INTO USERS (ID, NAME, LAST_NAME, PHONE_NUMBER, BIRTHDATE, PASSWORD, STATUS, BALANCE, PAYPAL_USER, EMAIL, CREATION_DATE, PHONE_CONF, EMAIL_CONF)
-
-VALUES(115963256, 'Ronald', 'McDonald', '25256556', SYSDATETIME(), 'mc', 'statAct', 0, '', 'mcdonalds@bussiness.com', SYSDATETIME(), 'PWOEMSKQ','LMBSQLAO');
-GO
-
-INSERT INTO ROLEXUSER(ID_USER, ID_ROLE, PRIVILEGE)
-VALUES(115963256, 2, 0)
-GO
-
+/*Utils*/
 insert into utils(id,name) values ('statAct','Active')
 GO
 insert into utils(id,name) values ('statDis','Disabled')
@@ -53,11 +27,9 @@ insert into utils(id,name) values ('vhcBike','Bicicleta')
 GO
 insert into utils(id,name) values ('vhcCar','Carro')
 GO
+/*Utils*/
 
-
-
-/*Lc*/
-
+/*Roles*/
 INSERT INTO [ROLE] (ID, NAME)
 VALUES (1, 'Admin');
 
@@ -69,25 +41,45 @@ VALUES (3, 'Driver');
 
 INSERT INTO [ROLE] (ID, NAME)
 VALUES (4, 'FUser');
+/*Roles*/
 
--- INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
--- VALUES (65565223, 1, 0);
+/*Users*/
 
--- INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
--- VALUES (115990509, 2, 0);
+INSERT INTO USERS (ID, NAME, LAST_NAME, PHONE_NUMBER, BIRTHDATE, PASSWORD, STATUS, BALANCE, PAYPAL_USER, EMAIL, CREATION_DATE, PHONE_CONF, EMAIL_CONF)
+values (1,'Admin','',0000,SYSDATETIME(),'4dm1n','statAct',0,'','ipsum@jobs.com',SYSDATETIME(), '', '')
+GO
 
--- INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
--- VALUES (115990509, 3, 0);
+INSERT INTO ROLEXUSER(ID_USER, ID_ROLE, PRIVILEGE)
+VALUES(1, 1, 0)
+GO
 
--- INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
--- VALUES (115990509, 1, 0);
+INSERT INTO USERS (ID, NAME, LAST_NAME, PHONE_NUMBER, BIRTHDATE, PASSWORD, STATUS, BALANCE, PAYPAL_USER, EMAIL, CREATION_DATE, PHONE_CONF, EMAIL_CONF)
 
--- /*LocalOwner*/
--- INSERT INTO [ROLEXUSER] (ID_USER, ID_ROLE, PRIVILEGE)
--- VALUES (5656565, 2, 1);
+VALUES(115963256, 'Ronald', 'McDonald', '25256556', SYSDATETIME(), 'mc', 'statAct', 0, '', 'mcdonalds@bussiness.com', SYSDATETIME(), 'PWOEMSKQ','LMBSQLAO');
+GO
 
--- INSERT INTO [USERXLOCAL] (ID_USER, ID_LOCAL)
--- VALUES(5656565, 6565)
+INSERT INTO ROLEXUSER(ID_USER, ID_ROLE, PRIVILEGE)
+VALUES(115963256, 2, 0)
+GO
+/*Users*/
+
+/*Membership*/
+INSERT INTO MEMBERSHIP(FEE, TYPE, COMMISSION, FEE_INTERVAL, STATUS)
+VALUES(0, 'typeLo', 0, 'intAnu', 'memAct')
+GO
+/*Membership*/
+
+/*Aplication*/
+INSERT INTO LOCAL(ID, ID_MEMBERSHIP, NAME, STATUS, LOCATION, OPENING_HOURS, PHONE_NUMBER, EMAIL, DESCRIPTION, WEBSITE, PRICE_RANGE, CATEGORY)
+VALUES (1, 1, 'Goeats', 'statAct', 'Goeats', 'Goeats', 'Goeats','Goeats','Goeats','Goeats','Goeats','typeLo');
+GO
+/*Aplication*/
+
+/*New product: Membership*/
+insert into PRODUCT(ID_LOCAL,NAME,STATUS,PRICE,DESCRIPTION,CATEGORY)
+values (1,'Membership','statAct',0,'Applications Membership','statAct');
+GO
+/*New product: Membership*/
 
 /*Admin Views*/
 INSERT INTO [VIEW] (ID_ROLE, CONTENT, TITLE)
