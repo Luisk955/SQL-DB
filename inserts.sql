@@ -9,6 +9,12 @@ insert into utils(id,name) values ('ordPen','Pending')
 GO
 insert into utils(id,name) values ('ordComp','Completed')
 GO
+insert into utils(id,name) values ('ordPenD','Pending Driver')
+GO
+insert into utils(id,name) values ('ordPenDel','Pending Delivery')
+GO
+insert into utils(id,name) values ('ordPenK','Pending Pickup')
+GO
 insert into utils(id,name) values ('memPen','Pending')
 GO
 insert into utils(id,name) values ('memAct','Activa')
