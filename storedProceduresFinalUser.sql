@@ -1,9 +1,10 @@
 -- RETRIVE ALL ORDERS FINAL USER
 
 CREATE PROCEDURE RET_ORDERS_USER_PR
-	@P_Id_Buyer int
-as
-	Select O.Id ID,O.Id_Buyer ID_BUYER,O.Id_Seller ID_SELLER,O.Id_Driver ID_DRIVER,O.Id_Location ID_LOCATION, O.Invoice INVOICE,U.Name STATUS,O.Start_Time START_TIME,O.End_Time END_TIME,O.Description DESCRIPTION,O.Type TYPE from orders O
-	Join UTILS U on O.STATUS=U.Id
-	where o.id_buyer=@P_Id_Buyer;
+	@P_Id_BUYER INT
+AS
+	SELECT o.ID, o.ID_BUYER, o.ID_SELLER, o.ID_DRIVER, o.ID_LOCATION,
+	o.INVOICE, o.STATUS, o.START_TIME, o.END_TIME, o.DESCRIPTION, O.TYPE
+	from orders o JOIN UTILS U on(o.STATUS=U.NAME)
+	WHERE id_buyer=@P_Id_BUYER
 GO
