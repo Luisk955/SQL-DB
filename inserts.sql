@@ -34,7 +34,12 @@ GO
 insert into utils(id,name) values ('vhcCar','Carro')
 GO
 /*Utils*/
-
+/*TAX*/
+insert into tax(name,PERCENTAGE) values ('drivBase',400)
+GO
+insert into tax(name,PERCENTAGE) values ('drivBonus',200)
+GO
+/*TAX*/
 /*Roles*/
 INSERT INTO [ROLE] (ID, NAME)
 VALUES (1, 'Admin');
